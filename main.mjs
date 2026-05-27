@@ -1,9 +1,9 @@
 import fs from "node:fs";
 import path from "node:path";
 
-import { simulateScenario } from "../simulation/simulate.mjs";
-import { createScenario4, createMultiShipDemo } from "../simulation/scenarios.mjs";
-import { saveCsv, saveSvgPlot, printPreview } from "../simulation/output.mjs";
+import { simulateScenario } from "./simulation/simulate.mjs";
+import { createScenario4, createMultiShipDemo } from "./simulation/scenarios.mjs";
+import { saveCsv, saveSvgPlot, printPreview } from "./simulation/output.mjs";
 
 function main() {
   const outputDir = path.join(process.cwd(), "simulation_results");
