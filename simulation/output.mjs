@@ -70,6 +70,19 @@ export function saveSvgPlot(rows, filePath) {
     `;
   }).join("\n");
 
+  const xTickStep = 5;
+  const xAxisTicks = Array.from(
+    { length: Math.floor((xMax - xMin) / xTickStep) + 1 },
+    (_, index) => xMin + index * xTickStep,
+  ).map((value) => {
+    const x = xScale(value);
+
+    return `
+      <line x1="${x}" y1="${height - padding}" x2="${x}" y2="${height - padding + 7}" stroke="#333" />
+      <text x="${x}" y="${height - padding + 24}" text-anchor="middle" font-size="14" font-family="Arial">${value}</text>
+    `;
+  }).join("\n");
+
   const svg = `
 <svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">
   <rect width="100%" height="100%" fill="white" />
@@ -81,6 +94,7 @@ export function saveSvgPlot(rows, filePath) {
   ${horizontalGrid}
 
   <line x1="${padding}" y1="${height - padding}" x2="${width - padding}" y2="${height - padding}" stroke="#333" />
+  ${xAxisTicks}
   <line x1="${padding}" y1="${padding}" x2="${padding}" y2="${height - padding}" stroke="#333" />
 
   <text x="${width / 2}" y="${height - 15}" text-anchor="middle" font-size="16" font-family="Arial">
