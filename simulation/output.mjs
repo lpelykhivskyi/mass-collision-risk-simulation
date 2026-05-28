@@ -100,9 +100,14 @@ export function saveSvgPlot(rows, filePath) {
   <polyline points="${makePolyline("r_env")}" fill="none" stroke="darkgray" stroke-width="2" stroke-dasharray="4 4" />
   ${makePoints("r_env")}
 
-  <text x="${width - 250}" y="70" font-size="15" font-family="Arial">R_total — суцільна лінія</text>
-  <text x="${width - 250}" y="95" font-size="15" font-family="Arial">R_geom — пунктир</text>
-  <text x="${width - 250}" y="120" font-size="15" font-family="Arial">R_env — короткий пунктир</text>
+  <line x1="${width - 250}" y1="70" x2="${width - 190}" y2="70" stroke="black" stroke-width="3" />
+  <text x="${width - 180}" y="75" font-size="15" font-family="Arial">- R_total</text>
+
+  <line x1="${width - 250}" y1="95" x2="${width - 190}" y2="95" stroke="gray" stroke-width="2" stroke-dasharray="8 5" />
+  <text x="${width - 180}" y="100" font-size="15" font-family="Arial">- R_geo</text>
+
+  <line x1="${width - 250}" y1="120" x2="${width - 190}" y2="120" stroke="darkgray" stroke-width="2" stroke-dasharray="4 4" />
+  <text x="${width - 180}" y="125" font-size="15" font-family="Arial">- R_env</text>
 </svg>
 `;
 
