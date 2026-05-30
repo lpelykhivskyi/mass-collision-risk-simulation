@@ -34,29 +34,35 @@ export function saveCsv(rows, filePath) {
 }
 
 export function saveSvgPlot(rows, filePath) {
-  const width = 1000;
-  const height = 520;
-  const padding = 60;
+  const width = 900;
+  const height = 420;
+
+  const paddingLeft = 75;
+  const paddingRight = 35;
+  const paddingTop = 35;
+  const paddingBottom = 65;
+
+  const plotWidth = width - paddingLeft - paddingRight;
+  const plotHeight = height - paddingTop - paddingBottom;
 
   const xMin = Math.min(...rows.map((row) => row.time_min));
   const xMax = Math.max(...rows.map((row) => row.time_min));
 
   const xScale = (x) =>
-    padding + ((x - xMin) / (xMax - xMin || 1)) * (width - padding * 2);
+    paddingLeft + ((x - xMin) / (xMax - xMin || 1)) * plotWidth;
 
-  const yScale = (y) =>
-    height - padding - y * (height - padding * 2);
+  const yScale = (y) => height - paddingBottom - y * plotHeight;
 
   const makePolyline = (key) =>
     rows
       .map((row) => `${xScale(row.time_min)},${yScale(row[key])}`)
       .join(" ");
 
-  const makePoints = (key) =>
+  const makePoints = (key, radius = 3, stroke = "black") =>
     rows
       .map(
         (row) =>
-          `<circle cx="${xScale(row.time_min)}" cy="${yScale(row[key])}" r="4" />`,
+          `<circle cx="${xScale(row.time_min)}" cy="${yScale(row[key])}" r="${radius}" fill="white" stroke="${stroke}" stroke-width="1.4" />`,
       )
       .join("\n");
 
@@ -65,8 +71,8 @@ export function saveSvgPlot(rows, filePath) {
     const y = yScale(value);
 
     return `
-      <line x1="${padding}" y1="${y}" x2="${width - padding}" y2="${y}" stroke="#ddd" />
-      <text x="20" y="${y + 5}" font-size="14">${value.toFixed(1)}</text>
+      <line x1="${paddingLeft}" y1="${y}" x2="${width - paddingRight}" y2="${y}" stroke="#e5e5e5" stroke-width="1" />
+      <text x="${paddingLeft - 15}" y="${y + 5}" text-anchor="end" font-size="13" font-family="Arial">${value.toFixed(1)}</text>
     `;
   }).join("\n");
 
@@ -74,54 +80,71 @@ export function saveSvgPlot(rows, filePath) {
   const xAxisTicks = Array.from(
     { length: Math.floor((xMax - xMin) / xTickStep) + 1 },
     (_, index) => xMin + index * xTickStep,
-  ).map((value) => {
-    const x = xScale(value);
+  )
+    .map((value) => {
+      const x = xScale(value);
 
-    return `
-      <line x1="${x}" y1="${height - padding}" x2="${x}" y2="${height - padding + 7}" stroke="#333" />
-      <text x="${x}" y="${height - padding + 24}" text-anchor="middle" font-size="14" font-family="Arial">${value}</text>
+      return `
+      <line x1="${x}" y1="${height - paddingBottom}" x2="${x}" y2="${height - paddingBottom + 6}" stroke="#333" stroke-width="1" />
+      <text x="${x}" y="${height - paddingBottom + 24}" text-anchor="middle" font-size="13" font-family="Arial">${value}</text>
     `;
-  }).join("\n");
+    })
+    .join("\n");
+
+  const maneuverTime = 12;
+  const maneuverX = xScale(maneuverTime);
 
   const svg = `
 <svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">
   <rect width="100%" height="100%" fill="white" />
 
-  <text x="${width / 2}" y="30" text-anchor="middle" font-size="22" font-family="Arial">
-    Динаміка ризику зіткнення в часі
-  </text>
-
   ${horizontalGrid}
 
-  <line x1="${padding}" y1="${height - padding}" x2="${width - padding}" y2="${height - padding}" stroke="#333" />
+  <line x1="${paddingLeft}" y1="${height - paddingBottom}" x2="${width - paddingRight}" y2="${height - paddingBottom}" stroke="#333" stroke-width="1.2" />
   ${xAxisTicks}
-  <line x1="${padding}" y1="${padding}" x2="${padding}" y2="${height - padding}" stroke="#333" />
+  <line x1="${paddingLeft}" y1="${paddingTop}" x2="${paddingLeft}" y2="${height - paddingBottom}" stroke="#333" stroke-width="1.2" />
 
-  <text x="${width / 2}" y="${height - 15}" text-anchor="middle" font-size="16" font-family="Arial">
-    Час, хв
+  <text x="${width / 2}" y="${height - 20}" text-anchor="middle" font-size="15" font-family="Arial">
+    Час t, хв
   </text>
 
-  <text x="18" y="${height / 2}" transform="rotate(-90 18 ${height / 2})" text-anchor="middle" font-size="16" font-family="Arial">
-    Нормований ризик
+  <text x="22" y="${height / 2}" transform="rotate(-90 22 ${height / 2})" text-anchor="middle" font-size="15" font-family="Arial">
+    Нормований рівень ризику
   </text>
 
-  <polyline points="${makePolyline("r_total")}" fill="none" stroke="black" stroke-width="3" />
-  ${makePoints("r_total")}
+  <line x1="${paddingLeft}" y1="${yScale(0.35)}" x2="${width - paddingRight}" y2="${yScale(0.35)}" stroke="#bdbdbd" stroke-width="1" stroke-dasharray="4 4" />
+  <text x="${paddingLeft + 8}" y="${yScale(0.35) - 6}" font-size="12" font-family="Arial" fill="#666">R = 0.35</text>
 
-  <polyline points="${makePolyline("r_geom")}" fill="none" stroke="gray" stroke-width="2" stroke-dasharray="8 5" />
-  ${makePoints("r_geom")}
+  <line x1="${paddingLeft}" y1="${yScale(0.65)}" x2="${width - paddingRight}" y2="${yScale(0.65)}" stroke="#bdbdbd" stroke-width="1" stroke-dasharray="4 4" />
+  <text x="${paddingLeft + 8}" y="${yScale(0.65) - 6}" font-size="12" font-family="Arial" fill="#666">R = 0.65</text>
 
-  <polyline points="${makePolyline("r_env")}" fill="none" stroke="darkgray" stroke-width="2" stroke-dasharray="4 4" />
-  ${makePoints("r_env")}
+  <line x1="${maneuverX}" y1="${paddingTop}" x2="${maneuverX}" y2="${height - paddingBottom}" stroke="#777" stroke-width="1.3" stroke-dasharray="5 5" />
+  <text x="${maneuverX - 8}" y="${paddingTop + 16}" text-anchor="end" font-size="13" font-family="Arial" fill="#555">
+    початок маневру
+  </text>
 
-  <line x1="${width - 250}" y1="70" x2="${width - 190}" y2="70" stroke="black" stroke-width="3" />
-  <text x="${width - 180}" y="75" font-size="15" font-family="Arial">- R_total</text>
+  <polyline points="${makePolyline("r_total")}" fill="none" stroke="black" stroke-width="2.6" />
+  ${makePoints("r_total", 3, "black")}
 
-  <line x1="${width - 250}" y1="95" x2="${width - 190}" y2="95" stroke="gray" stroke-width="2" stroke-dasharray="8 5" />
-  <text x="${width - 180}" y="100" font-size="15" font-family="Arial">- R_geo</text>
+  <polyline points="${makePolyline("r_geom")}" fill="none" stroke="#666" stroke-width="2" stroke-dasharray="8 5" />
+  ${makePoints("r_geom", 2.7, "#666")}
 
-  <line x1="${width - 250}" y1="120" x2="${width - 190}" y2="120" stroke="darkgray" stroke-width="2" stroke-dasharray="4 4" />
-  <text x="${width - 180}" y="125" font-size="15" font-family="Arial">- R_env</text>
+  <polyline points="${makePolyline("r_env")}" fill="none" stroke="#999" stroke-width="1.8" stroke-dasharray="3 5" />
+
+  <line x1="${width - 245}" y1="55" x2="${width - 190}" y2="55" stroke="black" stroke-width="2.6" />
+  <text x="${width - 178}" y="60" font-size="14" font-family="Arial">
+    - R<tspan baseline-shift="sub" font-size="10">total</tspan>
+  </text>
+
+  <line x1="${width - 245}" y1="80" x2="${width - 190}" y2="80" stroke="#666" stroke-width="2" stroke-dasharray="8 5" />
+  <text x="${width - 178}" y="85" font-size="14" font-family="Arial">
+    - R<tspan baseline-shift="sub" font-size="10">geo</tspan>
+  </text>
+
+  <line x1="${width - 245}" y1="105" x2="${width - 190}" y2="105" stroke="#999" stroke-width="1.8" stroke-dasharray="3 5" />
+  <text x="${width - 178}" y="110" font-size="14" font-family="Arial">
+    - R<tspan baseline-shift="sub" font-size="10">env</tspan>
+  </text>
 </svg>
 `;
 

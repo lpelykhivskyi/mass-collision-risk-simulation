@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 import { simulateScenario } from "./simulation/simulate.mjs";
-import { createScenario4, createMultiShipDemo } from "./simulation/scenarios.mjs";
+import { createScenario4, createMultiShipDemo, createScenario8 } from "./simulation/scenarios.mjs";
 import { saveCsv, saveSvgPlot, printPreview } from "./simulation/output.mjs";
 
 function main() {
@@ -12,7 +12,11 @@ function main() {
     fs.mkdirSync(outputDir);
   }
 
-  const scenarios = [createScenario4(), createMultiShipDemo()];
+  const scenarios = [
+    createScenario4(),
+    createMultiShipDemo(),
+    createScenario8(),
+  ];
   const combinedResults = [];
 
   scenarios.forEach((scenario, index) => {
