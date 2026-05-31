@@ -19,3 +19,16 @@ test("SVG plot does not render a maneuver marker line", () => {
   assert.doesNotMatch(svg, /початок безпечного обгону/);
   assert.doesNotMatch(svg, /data-maneuver-time=/);
 });
+
+test("SVG plot renders legend outside the plotting area", () => {
+  const scenario = createScenario(13);
+  const rows = simulateScenario({ scenario, durationMin: 20, stepMin: 1 });
+  const filePath = path.join(os.tmpdir(), "scenario-13-legend-test.svg");
+
+  saveSvgPlot(rows, filePath);
+
+  const svg = fs.readFileSync(filePath, "utf8");
+  assert.match(svg, /data-plot-right="830"/);
+  assert.match(svg, /data-legend="risk-series"/);
+  assert.match(svg, /x1="865"/);
+});

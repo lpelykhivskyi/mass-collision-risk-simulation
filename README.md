@@ -146,6 +146,7 @@ node main.mjs
 | `combined_results.csv`        | Об'єднані дані всіх сценаріїв              |
 | `scenario_1_risk_plot.svg`    | SVG-графік R_total, R_geom, R_env (сц. 1) |
 | `scenario_2_risk_plot.svg` ... `scenario_13_risk_plot.svg` | SVG-графіки R_total, R_geom, R_env |
+| `representative_scenarios_comparison.svg` | Порівняльний SVG-графік R_total для сценаріїв 1, 4, 6, 8, 13 |
 
 Колонки CSV: `time_min`, `scenario`, `own_ship`, `target_ship`, `encounter_type`, `colregs_role`, `dcpa_nm`, `tcpa_min`, `d_star`, `t_star`, `own_ship_length_nm`, `r_geom`, `r_env`, `u`, `c_colregs`, `r_total`, `risk_level`, `aggregation`.
 
@@ -300,5 +301,6 @@ Files written to `simulation_results/`:
 | `combined_results.csv`        | All scenarios merged                        |
 | `scenario_1_risk_plot.svg`    | R_total, R_geom, R_env over time (sc. 1)   |
 | `scenario_2_risk_plot.svg` ... `scenario_13_risk_plot.svg` | R_total, R_geom, R_env over time |
+| `representative_scenarios_comparison.svg` | Comparative R_total SVG plot for scenarios 1, 4, 6, 8, 13 |
 
 CSV columns: `time_min`, `scenario`, `own_ship`, `target_ship`, `encounter_type`, `colregs_role`, `dcpa_nm`, `tcpa_min`, `d_star`, `t_star`, `own_ship_length_nm`, `r_geom`, `r_env`, `u`, `c_colregs`, `r_total`, `risk_level`, `aggregation`.

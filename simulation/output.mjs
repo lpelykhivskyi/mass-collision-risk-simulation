@@ -34,11 +34,11 @@ export function saveCsv(rows, filePath) {
 }
 
 export function saveSvgPlot(rows, filePath) {
-  const width = 900;
+  const width = 1080;
   const height = 420;
 
   const paddingLeft = 75;
-  const paddingRight = 35;
+  const paddingRight = 250;
   const paddingTop = 35;
   const paddingBottom = 65;
 
@@ -92,7 +92,7 @@ export function saveSvgPlot(rows, filePath) {
     .join("\n");
 
   const svg = `
-<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">
+<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" data-plot-right="${width - paddingRight}">
   <rect width="100%" height="100%" fill="white" />
 
   ${horizontalGrid}
@@ -101,7 +101,7 @@ export function saveSvgPlot(rows, filePath) {
   ${xAxisTicks}
   <line x1="${paddingLeft}" y1="${paddingTop}" x2="${paddingLeft}" y2="${height - paddingBottom}" stroke="#333" stroke-width="1.2" />
 
-  <text x="${width / 2}" y="${height - 20}" text-anchor="middle" font-size="15" font-family="Arial">
+  <text x="${paddingLeft + plotWidth / 2}" y="${height - 20}" text-anchor="middle" font-size="15" font-family="Arial">
     Час t, хв
   </text>
 
@@ -123,20 +123,22 @@ export function saveSvgPlot(rows, filePath) {
 
   <polyline points="${makePolyline("r_env")}" fill="none" stroke="#999" stroke-width="1.8" stroke-dasharray="3 5" />
 
-  <line x1="${width - 245}" y1="55" x2="${width - 190}" y2="55" stroke="black" stroke-width="2.6" />
-  <text x="${width - 178}" y="60" font-size="14" font-family="Arial">
+  <g data-legend="risk-series">
+  <line x1="${width - 215}" y1="55" x2="${width - 160}" y2="55" stroke="black" stroke-width="2.6" />
+  <text x="${width - 148}" y="60" font-size="14" font-family="Arial">
     - R<tspan baseline-shift="sub" font-size="10">total</tspan>
   </text>
 
-  <line x1="${width - 245}" y1="80" x2="${width - 190}" y2="80" stroke="#666" stroke-width="2" stroke-dasharray="8 5" />
-  <text x="${width - 178}" y="85" font-size="14" font-family="Arial">
+  <line x1="${width - 215}" y1="80" x2="${width - 160}" y2="80" stroke="#666" stroke-width="2" stroke-dasharray="8 5" />
+  <text x="${width - 148}" y="85" font-size="14" font-family="Arial">
     - R<tspan baseline-shift="sub" font-size="10">geo</tspan>
   </text>
 
-  <line x1="${width - 245}" y1="105" x2="${width - 190}" y2="105" stroke="#999" stroke-width="1.8" stroke-dasharray="3 5" />
-  <text x="${width - 178}" y="110" font-size="14" font-family="Arial">
+  <line x1="${width - 215}" y1="105" x2="${width - 160}" y2="105" stroke="#999" stroke-width="1.8" stroke-dasharray="3 5" />
+  <text x="${width - 148}" y="110" font-size="14" font-family="Arial">
     - R<tspan baseline-shift="sub" font-size="10">env</tspan>
   </text>
+  </g>
 </svg>
 `;
 
