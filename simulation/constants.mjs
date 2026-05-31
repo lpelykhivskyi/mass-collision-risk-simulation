@@ -11,3 +11,9 @@ export const ColregsRole = {
   MUTUAL: "mutual",
   MIXED: "mixed",
 };
+
+export const DEFAULT_OWN_SHIP_LENGTH_M = 100;
+export const METERS_PER_NAUTICAL_MILE = 1852;
+export const DEFAULT_OWN_SHIP_LENGTH_NM =
+  DEFAULT_OWN_SHIP_LENGTH_M / METERS_PER_NAUTICAL_MILE;
+export const TCPA_NORMALIZATION_EPSILON_MIN = 0.001;

@@ -1,5 +1,6 @@
 export class Scenario {
   constructor({
+    number,
     name,
     ownShip,
     targetShips,
@@ -7,7 +8,10 @@ export class Scenario {
     encounterType,
     colregsRole,
     description,
+    cpa,
+    risk,
   }) {
+    this.number = number;
     this.name = name;
     this.ownShip = ownShip;
     this.targetShips = targetShips;
@@ -15,5 +19,7 @@ export class Scenario {
     this.encounterType = encounterType;
     this.colregsRole = colregsRole;
     this.description = description;
+    this.cpa = cpa;
+    this.risk = risk;
   }
 }

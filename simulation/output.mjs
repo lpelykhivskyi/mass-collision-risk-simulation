@@ -91,9 +91,6 @@ export function saveSvgPlot(rows, filePath) {
     })
     .join("\n");
 
-  const maneuverTime = 12;
-  const maneuverX = xScale(maneuverTime);
-
   const svg = `
 <svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">
   <rect width="100%" height="100%" fill="white" />
@@ -117,11 +114,6 @@ export function saveSvgPlot(rows, filePath) {
 
   <line x1="${paddingLeft}" y1="${yScale(0.65)}" x2="${width - paddingRight}" y2="${yScale(0.65)}" stroke="#bdbdbd" stroke-width="1" stroke-dasharray="4 4" />
   <text x="${paddingLeft + 8}" y="${yScale(0.65) - 6}" font-size="12" font-family="Arial" fill="#666">R = 0.65</text>
-
-  <line x1="${maneuverX}" y1="${paddingTop}" x2="${maneuverX}" y2="${height - paddingBottom}" stroke="#777" stroke-width="1.3" stroke-dasharray="5 5" />
-  <text x="${maneuverX - 8}" y="${paddingTop + 16}" text-anchor="end" font-size="13" font-family="Arial" fill="#555">
-    початок маневру
-  </text>
 
   <polyline points="${makePolyline("r_total")}" fill="none" stroke="black" stroke-width="2.6" />
   ${makePoints("r_total", 3, "black")}
@@ -153,11 +145,13 @@ export function saveSvgPlot(rows, filePath) {
 
 export function printPreview(rows) {
   console.table(
-    rows.slice(0, 10).map((row) => ({
+    rows.map((row) => ({
       time_min: row.time_min,
       target_ship: row.target_ship,
       dcpa_nm: row.dcpa_nm,
       tcpa_min: row.tcpa_min,
+      d_star: row.d_star,
+      t_star: row.t_star,
       r_geom: row.r_geom,
       r_env: row.r_env,
       u: row.u,

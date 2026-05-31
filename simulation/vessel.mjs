@@ -1,12 +1,21 @@
 import { degToRad } from "./utils.mjs";
+import { DEFAULT_OWN_SHIP_LENGTH_NM } from "./constants.mjs";
 
 export class VesselState {
-  constructor({ name, xNm, yNm, speedKn, courseDeg }) {
+  constructor({
+    name,
+    xNm,
+    yNm,
+    speedKn,
+    courseDeg,
+    lengthNm = DEFAULT_OWN_SHIP_LENGTH_NM,
+  }) {
     this.name = name;
     this.xNm = xNm;
     this.yNm = yNm;
     this.speedKn = speedKn;
     this.courseDeg = courseDeg;
+    this.lengthNm = lengthNm;
   }
 
   velocityNmPerMin() {
@@ -35,6 +44,7 @@ export class VesselState {
       yNm: this.yNm + velocity.y * dtMin,
       speedKn: this.speedKn,
       courseDeg: this.courseDeg,
+      lengthNm: this.lengthNm,
     });
   }
 }

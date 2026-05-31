@@ -1,5 +1,37 @@
 import { clamp, round } from "./utils.mjs";
-import { EncounterType, ColregsRole } from "./constants.mjs";
+import {
+  EncounterType,
+  ColregsRole,
+  DEFAULT_OWN_SHIP_LENGTH_NM,
+  TCPA_NORMALIZATION_EPSILON_MIN,
+} from "./constants.mjs";
+
+export function dimensionlessCpa({
+  dcpaNm,
+  tcpaMin,
+  ownShipLengthNm = DEFAULT_OWN_SHIP_LENGTH_NM,
+  ownSpeedNmPerMin,
+  epsilonMin = TCPA_NORMALIZATION_EPSILON_MIN,
+}) {
+  const safeLengthNm = ownShipLengthNm || DEFAULT_OWN_SHIP_LENGTH_NM;
+  const safeOwnSpeedNmPerMin = ownSpeedNmPerMin || 0;
+  const timeScaleMin =
+    safeOwnSpeedNmPerMin > 0
+      ? safeLengthNm / safeOwnSpeedNmPerMin + epsilonMin
+      : Number.POSITIVE_INFINITY;
+
+  return {
+    dStar: round(dcpaNm / safeLengthNm, 3),
+    tStar: Number.isFinite(tcpaMin / timeScaleMin)
+      ? round(tcpaMin / timeScaleMin, 3)
+      : Number.POSITIVE_INFINITY,
+    ownShipLengthNm: safeLengthNm,
+    ownSpeedNmPerMin: round(safeOwnSpeedNmPerMin, 3),
+    timeScaleMin: Number.isFinite(timeScaleMin)
+      ? round(timeScaleMin, 3)
+      : Number.POSITIVE_INFINITY,
+  };
+}
 
 export function calculateCpa(ownShip, targetShip) {
   const ownPosition = ownShip.positionVector();
@@ -7,6 +39,7 @@ export function calculateCpa(ownShip, targetShip) {
 
   const ownVelocity = ownShip.velocityNmPerMin();
   const targetVelocity = targetShip.velocityNmPerMin();
+  const ownSpeedNmPerMin = Math.hypot(ownVelocity.x, ownVelocity.y);
 
   const relativePosition = {
     x: targetPosition.x - ownPosition.x,
@@ -23,10 +56,18 @@ export function calculateCpa(ownShip, targetShip) {
 
   if (velocityNormSq === 0) {
     const distance = Math.hypot(relativePosition.x, relativePosition.y);
-
-    return {
+    const cpa = {
       dcpaNm: round(distance, 3),
       tcpaMin: Number.POSITIVE_INFINITY,
+    };
+
+    return {
+      ...cpa,
+      ...dimensionlessCpa({
+        ...cpa,
+        ownShipLengthNm: ownShip.lengthNm,
+        ownSpeedNmPerMin,
+      }),
     };
   }
 
@@ -49,9 +90,18 @@ export function calculateCpa(ownShip, targetShip) {
     dcpaNm = Math.hypot(closestVector.x, closestVector.y);
   }
 
-  return {
+  const cpa = {
     dcpaNm: round(dcpaNm, 3),
     tcpaMin: round(tcpaMin, 2),
+  };
+
+  return {
+    ...cpa,
+    ...dimensionlessCpa({
+      ...cpa,
+      ownShipLengthNm: ownShip.lengthNm,
+      ownSpeedNmPerMin,
+    }),
   };
 }
 
@@ -80,6 +130,10 @@ export function colregsCoefficient(role) {
 export function geometricRisk({
   dcpaNm,
   tcpaMin,
+  dStar,
+  tStar,
+  ownShipLengthNm = DEFAULT_OWN_SHIP_LENGTH_NM,
+  ownSpeedNmPerMin,
   encounterType,
   dcpaRefNm = 0.6,
   tcpaRefMin = 30,
@@ -88,8 +142,31 @@ export function geometricRisk({
     return 0;
   }
 
-  const rDcpa = clamp(1 - dcpaNm / dcpaRefNm);
-  const rTcpa = clamp(1 - tcpaMin / tcpaRefMin);
+  const timeScaleMin =
+    ownSpeedNmPerMin > 0
+      ? ownShipLengthNm / ownSpeedNmPerMin + TCPA_NORMALIZATION_EPSILON_MIN
+      : Number.POSITIVE_INFINITY;
+  const dcpaRefStar = dcpaRefNm / ownShipLengthNm;
+  const tcpaRefStar = tcpaRefMin / timeScaleMin;
+  const effectiveDStar =
+    dStar ??
+    dimensionlessCpa({
+      dcpaNm,
+      tcpaMin,
+      ownShipLengthNm,
+      ownSpeedNmPerMin,
+    }).dStar;
+  const effectiveTStar =
+    tStar ??
+    dimensionlessCpa({
+      dcpaNm,
+      tcpaMin,
+      ownShipLengthNm,
+      ownSpeedNmPerMin,
+    }).tStar;
+
+  const rDcpa = clamp(1 - effectiveDStar / dcpaRefStar);
+  const rTcpa = clamp(1 - effectiveTStar / tcpaRefStar);
   const rEncounter = encounterCoefficient(encounterType);
 
   const rGeom = 0.45 * rDcpa + 0.4 * rTcpa + 0.15 * rEncounter;
