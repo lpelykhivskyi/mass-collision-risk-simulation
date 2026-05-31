@@ -1,0 +1,22 @@
+time_min,scenario,own_ship,target_ship,encounter_type,colregs_role,dcpa_nm,tcpa_min,d_star,t_star,own_ship_length_nm,r_geom,r_env,u,c_colregs,r_total,risk_level,aggregation
+0,"Сценарій 5 — перетин курсів, де OS є stand-on vessel",OS,TS-1,crossing,stand-on,2.055,13.53,38.059,49.93,0.054,0.317,0.158,0.218,0.5,0.264,Низький,max pair risk
+1,"Сценарій 5 — перетин курсів, де OS є stand-on vessel",OS,TS-1,crossing,stand-on,1.965,12.5,36.392,46.129,0.054,0.344,0.162,0.218,0.5,0.303,Середній,max pair risk
+2,"Сценарій 5 — перетин курсів, де OS є stand-on vessel",OS,TS-1,crossing,stand-on,1.875,11.58,34.725,42.734,0.054,0.369,0.166,0.218,0.5,0.341,Середній,max pair risk
+3,"Сценарій 5 — перетин курсів, де OS є stand-on vessel",OS,TS-1,crossing,stand-on,1.784,10.75,33.04,39.671,0.054,0.391,0.17,0.218,0.5,0.376,Середній,max pair risk
+4,"Сценарій 5 — перетин курсів, де OS є stand-on vessel",OS,TS-1,crossing,stand-on,1.694,10.02,31.373,36.977,0.054,0.411,0.174,0.218,0.5,0.409,Середній,max pair risk
+5,"Сценарій 5 — перетин курсів, де OS є stand-on vessel",OS,TS-1,crossing,stand-on,1.604,9.4,29.706,34.689,0.054,0.429,0.178,0.218,0.5,0.441,Середній,max pair risk
+6,"Сценарій 5 — перетин курсів, де OS є stand-on vessel",OS,TS-1,crossing,stand-on,1.514,8.87,28.039,32.733,0.054,0.445,0.183,0.219,0.5,0.471,Середній,max pair risk
+7,"Сценарій 5 — перетин курсів, де OS є stand-on vessel",OS,TS-1,crossing,stand-on,1.423,8.44,26.354,31.146,0.054,0.46,0.187,0.219,0.5,0.5,Середній,max pair risk
+8,"Сценарій 5 — перетин курсів, де OS є stand-on vessel",OS,TS-1,crossing,stand-on,1.333,8.12,24.687,29.965,0.054,0.473,0.191,0.219,0.5,0.527,Середній,max pair risk
+9,"Сценарій 5 — перетин курсів, де OS є stand-on vessel",OS,TS-1,crossing,stand-on,1.243,7.89,23.02,29.117,0.054,0.486,0.195,0.219,0.5,0.554,Середній,max pair risk
+10,"Сценарій 5 — перетин курсів, де OS є stand-on vessel",OS,TS-1,crossing,stand-on,1.153,7.77,21.354,28.674,0.054,0.497,0.199,0.219,0.5,0.579,Середній,max pair risk
+11,"Сценарій 5 — перетин курсів, де OS є stand-on vessel",OS,TS-1,crossing,stand-on,1.062,7.74,19.668,28.563,0.054,0.507,0.203,0.219,0.5,0.604,Високий,max pair risk
+12,"Сценарій 5 — перетин курсів, де OS є stand-on vessel",OS,TS-1,crossing,stand-on,0.972,7.81,18.001,28.821,0.054,0.517,0.207,0.219,0.5,0.628,Високий,max pair risk
+13,"Сценарій 5 — перетин курсів, де OS є stand-on vessel",OS,TS-1,crossing,stand-on,0.882,7.99,16.335,29.486,0.054,0.527,0.211,0.219,0.5,0.651,Високий,max pair risk
+14,"Сценарій 5 — перетин курсів, де OS є stand-on vessel",OS,TS-1,crossing,stand-on,0.794,8.26,14.705,30.482,0.054,0.536,0.215,0.219,0.5,0.674,Високий,max pair risk
+15,"Сценарій 5 — перетин курсів, де OS є stand-on vessel",OS,TS-1,crossing,stand-on,0.718,8.63,13.297,31.848,0.054,0.545,0.22,0.22,0.5,0.697,Високий,max pair risk
+16,"Сценарій 5 — перетин курсів, де OS є stand-on vessel",OS,TS-1,crossing,stand-on,0.648,9.11,12.001,33.619,0.054,0.555,0.224,0.22,0.5,0.718,Високий,max pair risk
+17,"Сценарій 5 — перетин курсів, де OS є stand-on vessel",OS,TS-1,crossing,stand-on,0.574,9.68,10.63,35.722,0.054,0.568,0.228,0.22,0.5,0.74,Високий,max pair risk
+18,"Сценарій 5 — перетин курсів, де OS є stand-on vessel",OS,TS-1,crossing,stand-on,0.486,10.35,9.001,38.195,0.054,0.585,0.232,0.22,0.5,0.761,Високий,max pair risk
+19,"Сценарій 5 — перетин курсів, де OS є stand-on vessel",OS,TS-1,crossing,stand-on,0.38,11.13,7.038,41.073,0.054,0.596,0.236,0.22,0.5,0.781,Високий,max pair risk
+20,"Сценарій 5 — перетин курсів, де OS є stand-on vessel",OS,TS-1,crossing,stand-on,0.25,12,4.63,44.284,0.054,0.6,0.24,0.22,0.5,0.8,Високий,max pair risk

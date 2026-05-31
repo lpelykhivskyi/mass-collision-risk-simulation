@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="420" viewBox="0 0 1080 420" data-plot-right="830">
+  <rect width="100%" height="100%" fill="white" />
+
+  
+      <line x1="75" y1="355" x2="830" y2="355" stroke="#e5e5e5" stroke-width="1" />
+      <text x="60" y="360" text-anchor="end" font-size="13" font-family="Arial">0.0</text>
+    
+
+      <line x1="75" y1="291" x2="830" y2="291" stroke="#e5e5e5" stroke-width="1" />
+      <text x="60" y="296" text-anchor="end" font-size="13" font-family="Arial">0.2</text>
+    
+
+      <line x1="75" y1="227" x2="830" y2="227" stroke="#e5e5e5" stroke-width="1" />
+      <text x="60" y="232" text-anchor="end" font-size="13" font-family="Arial">0.4</text>
+    
+
+      <line x1="75" y1="163" x2="830" y2="163" stroke="#e5e5e5" stroke-width="1" />
+      <text x="60" y="168" text-anchor="end" font-size="13" font-family="Arial">0.6</text>
+    
+
+      <line x1="75" y1="99" x2="830" y2="99" stroke="#e5e5e5" stroke-width="1" />
+      <text x="60" y="104" text-anchor="end" font-size="13" font-family="Arial">0.8</text>
+    
+
+      <line x1="75" y1="35" x2="830" y2="35" stroke="#e5e5e5" stroke-width="1" />
+      <text x="60" y="40" text-anchor="end" font-size="13" font-family="Arial">1.0</text>
+    
+
+  <line x1="75" y1="355" x2="830" y2="355" stroke="#333" stroke-width="1.2" />
+  
+      <line x1="75" y1="355" x2="75" y2="361" stroke="#333" stroke-width="1" />
+      <text x="75" y="379" text-anchor="middle" font-size="13" font-family="Arial">0</text>
+    
+
+      <line x1="263.75" y1="355" x2="263.75" y2="361" stroke="#333" stroke-width="1" />
+      <text x="263.75" y="379" text-anchor="middle" font-size="13" font-family="Arial">5</text>
+    
+
+      <line x1="452.5" y1="355" x2="452.5" y2="361" stroke="#333" stroke-width="1" />
+      <text x="452.5" y="379" text-anchor="middle" font-size="13" font-family="Arial">10</text>
+    
+
+      <line x1="641.25" y1="355" x2="641.25" y2="361" stroke="#333" stroke-width="1" />
+      <text x="641.25" y="379" text-anchor="middle" font-size="13" font-family="Arial">15</text>
+    
+
+      <line x1="830" y1="355" x2="830" y2="361" stroke="#333" stroke-width="1" />
+      <text x="830" y="379" text-anchor="middle" font-size="13" font-family="Arial">20</text>
+    
+  <line x1="75" y1="35" x2="75" y2="355" stroke="#333" stroke-width="1.2" />
+
+  <text x="452.5" y="400" text-anchor="middle" font-size="15" font-family="Arial">
+    Час t, хв
+  </text>
+
+  <text x="22" y="210" transform="rotate(-90 22 210)" text-anchor="middle" font-size="15" font-family="Arial">
+    Нормований рівень ризику
+  </text>
+
+  <line x1="75" y1="243" x2="830" y2="243" stroke="#bdbdbd" stroke-width="1" stroke-dasharray="4 4" />
+  <text x="83" y="237" font-size="12" font-family="Arial" fill="#666">R = 0.35</text>
+
+  <line x1="75" y1="147" x2="830" y2="147" stroke="#bdbdbd" stroke-width="1" stroke-dasharray="4 4" />
+  <text x="83" y="141" font-size="12" font-family="Arial" fill="#666">R = 0.65</text>
+
+  <polyline points="75,226.04 112.75,211.32 150.5,197.88 188.25,185.39999999999998 226,173.88000000000002 263.75,163.32 301.5,153.72 339.25,144.76 377,126.84 414.75,119.80000000000001 452.5,113.72 490.25000000000006,107.95999999999998 528,92.60000000000002 565.75,89.40000000000003 603.5,86.51999999999998 641.25,84.28000000000003 679,82.04000000000002 716.75,80.75999999999999 754.5,79.80000000000001 792.25,79.48000000000002 830,79.80000000000001" fill="none" stroke="black" stroke-width="2.6" />
+  <circle cx="75" cy="226.04" r="3" fill="white" stroke="black" stroke-width="1.4" />
+<circle cx="112.75" cy="211.32" r="3" fill="white" stroke="black" stroke-width="1.4" />
+<circle cx="150.5" cy="197.88" r="3" fill="white" stroke="black" stroke-width="1.4" />
+<circle cx="188.25" cy="185.39999999999998" r="3" fill="white" stroke="black" stroke-width="1.4" />
+<circle cx="226" cy="173.88000000000002" r="3" fill="white" stroke="black" stroke-width="1.4" />
+<circle cx="263.75" cy="163.32" r="3" fill="white" stroke="black" stroke-width="1.4" />
+<circle cx="301.5" cy="153.72" r="3" fill="white" stroke="black" stroke-width="1.4" />
+<circle cx="339.25" cy="144.76" r="3" fill="white" stroke="black" stroke-width="1.4" />
+<circle cx="377" cy="126.84" r="3" fill="white" stroke="black" stroke-width="1.4" />
+<circle cx="414.75" cy="119.80000000000001" r="3" fill="white" stroke="black" stroke-width="1.4" />
+<circle cx="452.5" cy="113.72" r="3" fill="white" stroke="black" stroke-width="1.4" />
+<circle cx="490.25000000000006" cy="107.95999999999998" r="3" fill="white" stroke="black" stroke-width="1.4" />
+<circle cx="528" cy="92.60000000000002" r="3" fill="white" stroke="black" stroke-width="1.4" />
+<circle cx="565.75" cy="89.40000000000003" r="3" fill="white" stroke="black" stroke-width="1.4" />
+<circle cx="603.5" cy="86.51999999999998" r="3" fill="white" stroke="black" stroke-width="1.4" />
+<circle cx="641.25" cy="84.28000000000003" r="3" fill="white" stroke="black" stroke-width="1.4" />
+<circle cx="679" cy="82.04000000000002" r="3" fill="white" stroke="black" stroke-width="1.4" />
+<circle cx="716.75" cy="80.75999999999999" r="3" fill="white" stroke="black" stroke-width="1.4" />
+<circle cx="754.5" cy="79.80000000000001" r="3" fill="white" stroke="black" stroke-width="1.4" />
+<circle cx="792.25" cy="79.48000000000002" r="3" fill="white" stroke="black" stroke-width="1.4" />
+<circle cx="830" cy="79.80000000000001" r="3" fill="white" stroke="black" stroke-width="1.4" />
+
+  <polyline points="75,249.07999999999998 112.75,237.56 150.5,226.68 188.25,216.76 226,207.79999999999998 263.75,199.16 301.5,191.48 339.25,184.12 377,177.39999999999998 414.75,171.32000000000002 452.5,165.24 490.25000000000006,159.8 528,154.68 565.75,149.88 603.5,144.76 641.25,139.95999999999998 679,131.32000000000002 716.75,127.16000000000003 754.5,119.48000000000002 792.25,116.28 830,115" fill="none" stroke="#666" stroke-width="2" stroke-dasharray="8 5" />
+  <circle cx="75" cy="249.07999999999998" r="2.7" fill="white" stroke="#666" stroke-width="1.4" />
+<circle cx="112.75" cy="237.56" r="2.7" fill="white" stroke="#666" stroke-width="1.4" />
+<circle cx="150.5" cy="226.68" r="2.7" fill="white" stroke="#666" stroke-width="1.4" />
+<circle cx="188.25" cy="216.76" r="2.7" fill="white" stroke="#666" stroke-width="1.4" />
+<circle cx="226" cy="207.79999999999998" r="2.7" fill="white" stroke="#666" stroke-width="1.4" />
+<circle cx="263.75" cy="199.16" r="2.7" fill="white" stroke="#666" stroke-width="1.4" />
+<circle cx="301.5" cy="191.48" r="2.7" fill="white" stroke="#666" stroke-width="1.4" />
+<circle cx="339.25" cy="184.12" r="2.7" fill="white" stroke="#666" stroke-width="1.4" />
+<circle cx="377" cy="177.39999999999998" r="2.7" fill="white" stroke="#666" stroke-width="1.4" />
+<circle cx="414.75" cy="171.32000000000002" r="2.7" fill="white" stroke="#666" stroke-width="1.4" />
+<circle cx="452.5" cy="165.24" r="2.7" fill="white" stroke="#666" stroke-width="1.4" />
+<circle cx="490.25000000000006" cy="159.8" r="2.7" fill="white" stroke="#666" stroke-width="1.4" />
+<circle cx="528" cy="154.68" r="2.7" fill="white" stroke="#666" stroke-width="1.4" />
+<circle cx="565.75" cy="149.88" r="2.7" fill="white" stroke="#666" stroke-width="1.4" />
+<circle cx="603.5" cy="144.76" r="2.7" fill="white" stroke="#666" stroke-width="1.4" />
+<circle cx="641.25" cy="139.95999999999998" r="2.7" fill="white" stroke="#666" stroke-width="1.4" />
+<circle cx="679" cy="131.32000000000002" r="2.7" fill="white" stroke="#666" stroke-width="1.4" />
+<circle cx="716.75" cy="127.16000000000003" r="2.7" fill="white" stroke="#666" stroke-width="1.4" />
+<circle cx="754.5" cy="119.48000000000002" r="2.7" fill="white" stroke="#666" stroke-width="1.4" />
+<circle cx="792.25" cy="116.28" r="2.7" fill="white" stroke="#666" stroke-width="1.4" />
+<circle cx="830" cy="115" r="2.7" fill="white" stroke="#666" stroke-width="1.4" />
+
+  <polyline points="75,211 112.75,206.84 150.5,202.68 188.25,198.52 226,194.36 263.75,190.2 301.5,186.04 339.25,181.88 377,177.71999999999997 414.75,173.56 452.5,169.4 490.25000000000006,165.24 528,161.08 565.75,156.92000000000002 603.5,152.76 641.25,148.6 679,144.44 716.75,140.27999999999997 754.5,136.11999999999998 792.25,131.96 830,127.80000000000001" fill="none" stroke="#999" stroke-width="1.8" stroke-dasharray="3 5" />
+
+  <g data-legend="risk-series">
+  <line x1="865" y1="55" x2="920" y2="55" stroke="black" stroke-width="2.6" />
+  <text x="932" y="60" font-size="14" font-family="Arial">
+    - R<tspan baseline-shift="sub" font-size="10">total</tspan>
+  </text>
+
+  <line x1="865" y1="80" x2="920" y2="80" stroke="#666" stroke-width="2" stroke-dasharray="8 5" />
+  <text x="932" y="85" font-size="14" font-family="Arial">
+    - R<tspan baseline-shift="sub" font-size="10">geo</tspan>
+  </text>
+
+  <line x1="865" y1="105" x2="920" y2="105" stroke="#999" stroke-width="1.8" stroke-dasharray="3 5" />
+  <text x="932" y="110" font-size="14" font-family="Arial">
+    - R<tspan baseline-shift="sub" font-size="10">env</tspan>
+  </text>
+  </g>
+</svg>
